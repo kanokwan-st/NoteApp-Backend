@@ -1,0 +1,107 @@
+### Get all users
+GET http://localhost:3000/mongo/users
+
+### Create a new user
+POST http://localhost:3000/mongo/users
+Content-Type: application/json
+
+{
+    "name": "kk1 Person",
+    "email": "kk1person@example.com"
+}
+
+### Update a user
+PUT http://localhost:3000/mongo/users/680a005079bb422d7eb5b196
+Content-Type: application/json
+
+{
+    "name": "kiki Person",
+    "email": "kikiperson@example.com"
+}
+
+### Delete a user
+DELETE http://localhost:3000/mongo/users/680a005079bb422d7eb5b196
+
+
+######################## NOTES ####################################
+
+### Get all notes
+GET http://localhost:3000/mongo/notes
+
+### Create a new note
+POST http://localhost:3000/mongo/notes
+Content-Type: application/json
+
+{
+    "title": "b1",
+    "content": "This is note b1",
+    "tags": ["nodejs", "express"],
+    "isPinned": false,
+    "userId": "6809c35541affeeac6429191"
+}
+
+### Update a note
+PUT http://localhost:3000/mongo/notes/680a049b049c950da1731ae7
+Content-Type: application/json
+
+{
+    "title": "aa",
+    "content": "This is Updated Note a",
+    "tags": ["nodejs", "express"],
+    "isPinned": false,
+    "userId": "6809dbf5f00f1b952ac72f47"
+}
+
+### Delete a note
+DELETE http://localhost:3000/mongo/notes/680a049b049c950da1731ae7
+
+
+######################## AUTHENTICATION ####################################
+
+### Register a new user
+POST http://localhost:3000/mongo/auth/register
+Content-Type: application/json
+
+{
+    "fullName": "Funny3 Duck",
+    "email": "funny3.duck@example.com",
+    "password": "funny123"
+}
+
+### Login with the registered user
+POST http://localhost:3000/mongo/auth/login
+Content-Type: application/json
+
+{
+    "email": "funny3.duck@example.com",
+    "password": "funny123"
+}
+
+### Add a new note (protected route)
+POST http://localhost:3000/mongo/add-note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiMzkyMWIxNDQwNmNiNTVlZWJkZDUiLCJpYXQiOjE3NDU1NjYwMzEsImV4cCI6MTc0NTU2OTYzMX0.vLSzXttoYi1bx8qJm0G7cZbdQxS6LKJ5aHYTFHZL974
+
+{
+    "title": "Funny's note",
+    "content": "This is a funny note.",
+    "tags": ["important", "yesterday"]
+}
+
+### Get all notes for the login user
+GET http://localhost:3000/mongo/get-all-notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiMzkyMWIxNDQwNmNiNTVlZWJkZDUiLCJpYXQiOjE3NDU1NjYwMzEsImV4cCI6MTc0NTU2OTYzMX0.vLSzXttoYi1bx8qJm0G7cZbdQxS6LKJ5aHYTFHZL974
+
+
+### Search notes
+GET http://localhost:3000/mongo/search-notes?query=funny
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiMzkyMWIxNDQwNmNiNTVlZWJkZDUiLCJpYXQiOjE3NDU1NjYwMzEsImV4cCI6MTc0NTU2OTYzMX0.vLSzXttoYi1bx8qJm0G7cZbdQxS6LKJ5aHYTFHZL974
+
+
+
+
+
+
+################## Auth Note #############################
+
+### 

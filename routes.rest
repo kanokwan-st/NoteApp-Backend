@@ -1,0 +1,27 @@
+### Get spareNotes
+GET http://localhost:3000/sparenotes
+
+
+### Create a new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Charlie6",
+    "email": "charlie6@example.com"
+}
+
+
+### Create a new note
+POST http://localhost:3000/notes
+Content-Type: application/json
+
+{
+    "title": "First Note2",
+    "content": "I love notes2",
+    "tags": ["personal", "draft"],
+    "is_pinned": true,
+    "user_id": 2
+}
+
+
