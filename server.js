@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 app.use(cookieParser());
 
 app.use(cors({
-  origin: "http://localhost:5173",  // Allow frontend port 5173 to access backend
+  origin: ["http://localhost:5173", "https://note-app-frontend-miniproject.vercel.app/"], // Allow frontend port 5173 and vercel to access backend
   credentials: true
 }))
 
