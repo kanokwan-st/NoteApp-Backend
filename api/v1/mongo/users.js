@@ -10,7 +10,7 @@ const router = express.Router();
 router.post("/auth/register", register);
 
 // Login a user
-router.post("/auth/login", login);
+// router.post("/auth/login", login);
 
 // Login a user - jwt signed token
 router.post("/auth/cookie/login", async (req, res) => {

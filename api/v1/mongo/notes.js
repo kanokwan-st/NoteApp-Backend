@@ -51,13 +51,13 @@ router.delete("/notes/:id", async (req, res) => {
   }
 });
 
-// ----------------------------------------------------
+// -----------------Authentication----------------------------
 
 // Add note
 router.post("/add-note", authUser, async (req, res) => {
   const { title, content, tags = [], isPinned = false } = req.body;
 
-  const { user } = req.user;
+  const userId = req.user._id;
 
   if (!title || !content) {
     res.status(400).json({
@@ -66,7 +66,7 @@ router.post("/add-note", authUser, async (req, res) => {
     });
   }
 
-  if (!user || !user._id) {
+  if (!userId) {
     res.status(400).json({
       error: true,
       message: "Invalid user credentials!",
@@ -79,7 +79,7 @@ router.post("/add-note", authUser, async (req, res) => {
       content,
       tags,
       isPinned,
-      userId: user._id,
+      userId,
     });
 
     await note.save();
@@ -104,9 +104,8 @@ router.put("/update-note-pinned/:noteId", authUser, async (req, res) => {});
 
 // Get all notes by user id
 router.get("/get-all-notes", authUser, async (req, res) => {
-  const { user } = req.user;
   try {
-    const notes = await Note.find({ userId: user._id }).sort({ isPinned: -1 });
+    const notes = await Note.find({ userId: req.user._id }).sort({ isPinned: -1 });
     res.json({
       error: false,
       notes,
