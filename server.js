@@ -4,8 +4,9 @@ import { createClient } from "@libsql/client";
 import apiRoutes from "./api/v1/routes.js";
 import router from "./sparenotes.js";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
-import cors from "cors";  //
+import cors from "cors"; 
 
 dotenv.config();
 
@@ -13,12 +14,14 @@ const app = express();
 
 const PORT = process.env.PORT;
 
-app.use(express.json());
+app.use(cookieParser());
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "http://localhost:5173",  // Allow frontend port 5173 to access backend
   credentials: true
 }))
+
+app.use(express.json());
 
 // Turso
 const db = createClient({

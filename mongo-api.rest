@@ -63,18 +63,18 @@ POST http://localhost:3000/mongo/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "Funny3 Duck",
-    "email": "funny3.duck@example.com",
+    "fullName": "Funny33 Duck",
+    "email": "funny33.duck@example.com",
     "password": "funny123"
 }
 
 ### Login with the registered user
-POST http://localhost:3000/mongo/auth/login
+POST http://localhost:3000/mongo/auth/cookie/login
 Content-Type: application/json
 
 {
-    "email": "funny3.duck@example.com",
-    "password": "funny123"
+    "email": "aaa.duck@example.com",
+    "password": "aaa555123"
 }
 
 ### Add a new note (protected route)
